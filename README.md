@@ -1,6 +1,8 @@
 # @goncharovv/eslint-config
 
-### Frontend Config
+## Frontend Config
+
+For developing React applications with TypeScript
 
 ```bash
 npm install -D eslint globals @goncharovv/eslint-config
@@ -23,7 +25,9 @@ export default [
 
 ```
 
-### Minimal Config
+## Minimal Config
+
+Without rules for React and browser globals
 
 ```bash
 npm install -D eslint @goncharovv/eslint-config
@@ -36,6 +40,6 @@ import { eslintConfig } from '@goncharovv/eslint-config';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-	...eslintConfig,
+  ...eslintConfig,
 ];
 ```
