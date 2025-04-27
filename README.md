@@ -10,7 +10,7 @@ npm install -D eslint globals @goncharovv/eslint-config
 // eslint.config.mjs
 
 import globals from 'globals';
-import { eslintConfig, eslintConfigReact } from '@vg/eslint-config';
+import { eslintConfig, eslintConfigReact } from '@goncharovv/eslint-config';
 
 
 /** @type {import('eslint').Linter.Config[]} */
