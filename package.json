@@ -1,18 +1,27 @@
 {
   "name": "@goncharovv/eslint-config",
+  "private": false,
   "version": "1.0.0",
   "description": "eslint configuration",
+  "type": "module",
   "main": "index.mjs",
+  "keywords": [
+    "eslint",
+    "config",
+    "lint",
+    "react"
+  ],
+  "author": "Vadim Goncharov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoncharovV/eslint-config.git"
+  },
+  "homepage": "https://github.com/GoncharovV/eslint-config.git",
   "scripts": {
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix"
   },
-  "keywords": [
-    "eslint",
-    "config"
-  ],
-  "author": "Vadim Goncharov",
-  "license": "ISC",
   "peerDependencies": {
     "eslint": ">=9"
   },
