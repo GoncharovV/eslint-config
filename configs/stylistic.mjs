@@ -82,7 +82,7 @@ export const stylisticConfig = {
     '@stylistic/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }],
     '@stylistic/one-var-declaration-per-line': ['error', 'initializations'],
 
-    '@stylistic/operator-linebreak': ['error', 'after'],
+    '@stylistic/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before' } }],
     '@stylistic/padded-blocks': ['error', { blocks: 'never', classes: 'always', switches: 'never' }],
     // TODO:
     '@stylistic/padding-line-between-statements': [
