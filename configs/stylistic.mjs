@@ -218,5 +218,6 @@ export const stylisticConfig = {
         multilineDetection: 'brackets',
       },
     ],
+    '@stylistic/type-annotation-spacing': ['error'],
   },
 };
