@@ -12,7 +12,7 @@ import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
  * import "reflect-metadata"
  * ```
  */
-const asSoonAsPossible = `${['reflect-metadata'].join('|')}`;
+const asSoonAsPossible = `${['reflect-metadata', 'dotenv'].join('|')}`;
 
 /**
  * Builtin NodeJS modules
