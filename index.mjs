@@ -1,6 +1,7 @@
 import {
   commonConfig,
   importsConfig,
+  jsdocConfig,
   reactConfig,
   stylisticConfig,
   typescriptConfig,
@@ -21,6 +22,7 @@ export const eslintConfig = [
   ...typescriptConfig,
   ...importsConfig,
   stylisticConfig,
+  jsdocConfig,
 ];
 
 /** @type {import('eslint').Linter.Config[]} */
