@@ -16,7 +16,21 @@ export const stylisticConfig = {
     '@stylistic/block-spacing': ['error', 'always'],
     '@stylistic/brace-style': ['error', '1tbs'],
 
-    '@stylistic/comma-dangle': ['error', 'always-multiline'],
+    '@stylistic/comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'always-multiline',
+        importAttributes: 'always-multiline',
+        dynamicImports: 'always-multiline',
+        enums: 'always-multiline',
+        generics: 'ignore',
+        tuples: 'always-multiline',
+      },
+    ],
     '@stylistic/comma-spacing': ['error', { before: false, after: true }],
     '@stylistic/comma-style': ['error', 'last'],
 
@@ -219,5 +233,6 @@ export const stylisticConfig = {
       },
     ],
     '@stylistic/type-annotation-spacing': ['error'],
+    '@stylistic/type-generic-spacing': ['error'],
   },
 };
