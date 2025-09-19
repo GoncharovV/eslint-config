@@ -36,7 +36,7 @@ export const eslintConfigReact = [
       '@goncharovv': customRulesPlugin,
     },
     rules: {
-      'goncharovv/no-jsx-adjacent-empty-lines': 'error',
+      '@goncharovv/no-jsx-adjacent-empty-lines': 'error',
     },
   },
 ];
