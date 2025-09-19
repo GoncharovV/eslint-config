@@ -170,7 +170,6 @@ export const stylisticConfig = {
 
     '@stylistic/jsx-function-call-newline': ['error', 'multiline'],
 
-    '@stylistic/jsx-indent': ['error', 2],
     '@stylistic/jsx-indent-props': ['error', 2],
 
     '@stylistic/jsx-max-props-per-line': ['error', { maximum: { single: 3, multi: 1 } }],
@@ -180,8 +179,6 @@ export const stylisticConfig = {
     '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'non-jsx' }],
 
     '@stylistic/jsx-pascal-case': ['error', { allowLeadingUnderscore: true }],
-
-    '@stylistic/jsx-props-no-multi-spaces': 'error',
 
     '@stylistic/jsx-self-closing-comp': [
       'error',
