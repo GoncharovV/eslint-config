@@ -1,1 +1,6 @@
-export { eslintConfig as default } from './index.mjs';
+import globals from 'globals';
+
+import { eslintConfig, eslintConfigReact } from './index.mjs';
+
+
+export default [...eslintConfig, ...eslintConfigReact, { languageOptions: { globals: { ...globals.node } } }];

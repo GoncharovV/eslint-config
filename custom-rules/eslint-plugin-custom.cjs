@@ -1,4 +1,6 @@
-// eslint-plugin-custom.js
+/**
+ * DeepSeek (19.09.25)
+ */
 module.exports = {
   rules: {
     'no-jsx-adjacent-empty-lines': {
@@ -6,6 +8,10 @@ module.exports = {
         type: 'layout',
         fixable: 'whitespace',
         schema: [],
+        messages: {
+          afterOpen: 'Empty line after opening tag is not allowed.',
+          beforeClose: 'Empty line before closing tag is not allowed.',
+        },
       },
       create(context) {
         const sourceCode = context.getSourceCode();
@@ -19,6 +25,10 @@ module.exports = {
           }
 
           return false;
+        }
+
+        function getIndentation(line) {
+          return line.match(/^\s*/)[0];
         }
 
         function checkJSXElement(node) {
@@ -44,10 +54,16 @@ module.exports = {
           if (hasEmptyLines(textAfterOpening)) {
             context.report({
               node,
-              message: 'Empty line after opening tag is not allowed.',
+              messageId: 'afterOpen',
               loc: {
                 start: sourceCode.getLocFromIndex(openingEnd),
                 end: sourceCode.getLocFromIndex(firstChildStart),
+              },
+              fix(fixer) {
+                const firstChildLine = sourceCode.lines[firstChild.loc.start.line - 1];
+                const indent = getIndentation(firstChildLine);
+
+                return fixer.replaceTextRange([openingEnd, firstChildStart], `\n${indent}`);
               },
             });
           }
@@ -59,10 +75,16 @@ module.exports = {
           if (hasEmptyLines(textBeforeClosing)) {
             context.report({
               node,
-              message: 'Empty line before closing tag is not allowed.',
+              messageId: 'beforeClose',
               loc: {
                 start: sourceCode.getLocFromIndex(lastChildEnd),
                 end: sourceCode.getLocFromIndex(closingStart),
+              },
+              fix(fixer) {
+                const closingLine = sourceCode.lines[node.closingElement.loc.start.line - 1];
+                const indent = getIndentation(closingLine);
+
+                return fixer.replaceTextRange([lastChildEnd, closingStart], `\n${indent}`);
               },
             });
           }

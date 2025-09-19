@@ -6,6 +6,7 @@ import {
   stylisticConfig,
   typescriptConfig,
 } from './configs/index.mjs';
+import customRulesPlugin from './custom-rules/eslint-plugin-custom.cjs';
 
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -23,7 +24,19 @@ export const eslintConfig = [
   ...importsConfig,
   stylisticConfig,
   jsdocConfig,
+
+
 ];
 
 /** @type {import('eslint').Linter.Config[]} */
-export const eslintConfigReact = [...reactConfig];
+export const eslintConfigReact = [
+  ...reactConfig,
+  {
+    plugins: {
+      '@goncharovv': customRulesPlugin,
+    },
+    rules: {
+      'goncharovv/no-jsx-adjacent-empty-lines': 'error',
+    },
+  },
+];
