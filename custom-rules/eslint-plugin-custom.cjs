@@ -90,8 +90,66 @@ module.exports = {
           }
         }
 
+        function checkJSXFragment(node) {
+          const children = node.children.filter((child) => {
+            if (child.type === 'JSXText') {
+              return child.value.trim() !== '';
+            }
+
+            return true;
+          });
+
+          if (children.length === 0) return;
+
+          const firstChild = children[0];
+          const lastChild = children[children.length - 1];
+
+          const openingEnd = node.openingFragment.range[1];
+          const firstChildStart = firstChild.range[0];
+          const textAfterOpening = sourceCode.text.slice(openingEnd, firstChildStart);
+
+          if (hasEmptyLines(textAfterOpening)) {
+            context.report({
+              node,
+              messageId: 'afterOpen',
+              loc: {
+                start: sourceCode.getLocFromIndex(openingEnd),
+                end: sourceCode.getLocFromIndex(firstChildStart),
+              },
+              fix(fixer) {
+                const firstChildLine = sourceCode.lines[firstChild.loc.start.line - 1];
+                const indent = getIndentation(firstChildLine);
+
+                return fixer.replaceTextRange([openingEnd, firstChildStart], `\n${indent}`);
+              },
+            });
+          }
+
+          const lastChildEnd = lastChild.range[1];
+          const closingStart = node.closingFragment.range[0];
+          const textBeforeClosing = sourceCode.text.slice(lastChildEnd, closingStart);
+
+          if (hasEmptyLines(textBeforeClosing)) {
+            context.report({
+              node,
+              messageId: 'beforeClose',
+              loc: {
+                start: sourceCode.getLocFromIndex(lastChildEnd),
+                end: sourceCode.getLocFromIndex(closingStart),
+              },
+              fix(fixer) {
+                const closingLine = sourceCode.lines[node.closingFragment.loc.start.line - 1];
+                const indent = getIndentation(closingLine);
+
+                return fixer.replaceTextRange([lastChildEnd, closingStart], `\n${indent}`);
+              },
+            });
+          }
+        }
+
         return {
           JSXElement: checkJSXElement,
+          JSXFragment: checkJSXFragment,
         };
       },
     },
