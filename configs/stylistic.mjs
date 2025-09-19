@@ -174,7 +174,8 @@ export const stylisticConfig = {
 
     '@stylistic/jsx-max-props-per-line': ['error', { maximum: { single: 3, multi: 1 } }],
 
-    // '@stylistic/jsx-newline': ['error'],		
+    // Useless rule.
+    // '@stylistic/jsx-newline': ['error', { prevent: true, allowMultilines: true }],
 
     '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'non-jsx' }],
 
