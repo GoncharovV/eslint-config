@@ -14,7 +14,7 @@ module.exports = {
         },
       },
       create(context) {
-        const sourceCode = context.getSourceCode();
+        const sourceCode = context.sourceCode;
 
         function hasEmptyLines(text) {
           const lines = text.split(/\r?\n/);

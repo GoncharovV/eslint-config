@@ -14,7 +14,7 @@ export const reactCommonConfig = {
   },
   settings: {
     react: {
-      version: 'detect',
+      version: '19',
     },
   },
 };
